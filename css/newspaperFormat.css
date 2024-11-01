@@ -60,10 +60,7 @@ nav {
     border-color: black;
 }
 
-img.qrCode{
-    width:5vw;
-    height:2vh
-}
+
 
 
 /* Text */
@@ -103,11 +100,16 @@ h3 hr {
     border-color: black;
 }
 
-img {
+body>img {
     filter: grayscale(80%);
     margin: 2vh;
     height: 35vh;
     width: 45vh;
+}
+
+img.qrCode {
+    width: 5vw;
+    height: 2vh
 }
 
 
@@ -152,20 +154,20 @@ img {
         font-size: .3vw;
     }
 
-    nav > ul{
+    nav>ul {
         margin: 0;
         margin-bottom: 4vh;
     }
 
-    nav > ul > li{
-       
-        margin:0;
+    nav>ul>li {
+
+        margin: 0;
         margin-top: 1vh;
     }
 
-    nav > ul > li > a{
-        text-wrap:wrap;
-         height:6vh;
+    nav>ul>li>a {
+        text-wrap: wrap;
+        height: 6vh;
         border: .5vh;
         border-top: 0;
         border-right: 0;
@@ -174,22 +176,22 @@ img {
         border-color: black;
     }
 
-    h3 { 
-        width:96vw;
+    h3 {
+        width: 96vw;
         margin-right: 2vw;
         margin-left: 2vw;
         margin-top: 8vh;
-        border:0;
+        border: 0;
         border-bottom: .5vw;
         border-style: solid;
         border-color: rgb(85, 85, 85);
     }
 }
 
-@media (max-width:999px) AND (min-height: 500px){
-    nav > ul > li > a{
-        text-wrap:wrap;
-         height:6vh;
+@media (max-width:999px) AND (min-height: 500px) {
+    nav>ul>li>a {
+        text-wrap: wrap;
+        height: 6vh;
         border: .5vh;
         border-top: 0;
         border-right: 0;
