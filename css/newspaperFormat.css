@@ -60,12 +60,6 @@ nav {
     border-color: black;
 }
 
-nav > ul > li > img.qrCode {
-    width: 3vw;
-    height: 10vh
-}
-
-
 /* Text */
 h1 {
     align-items: center;
