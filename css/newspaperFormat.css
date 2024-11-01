@@ -60,7 +60,10 @@ nav {
     border-color: black;
 }
 
-
+nav > ul > li > img.qrCode {
+    width: 5vw;
+    height: 2vh
+}
 
 
 /* Text */
@@ -100,16 +103,11 @@ h3 hr {
     border-color: black;
 }
 
-body>img {
+img {
     filter: grayscale(80%);
     margin: 2vh;
     height: 35vh;
     width: 45vh;
-}
-
-img.qrCode {
-    width: 5vw;
-    height: 2vh
 }
 
 
