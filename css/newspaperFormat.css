@@ -60,6 +60,10 @@ nav {
     border-color: black;
 }
 
+img.qrCode{
+    width:5vw;
+    height:2vh
+}
 
 
 /* Text */
