@@ -31,7 +31,7 @@ body {
   
 
   #terminal-prompt {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 5px;
   }

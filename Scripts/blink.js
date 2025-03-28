@@ -1,8 +1,15 @@
+const logIn = [
+  "NiftyOS 1.0.0 LTS Nifty-Desktop tty7",
+  "\n\n",
+  "NiftyOS login: ",
+  "Password: ",
+];
+
 const updates = [
   "Initializing LogIn MOTD...",
   "",
   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-  "Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-32-generic i686)",
+  "NiftyOS 1.0.0 LTS (GNU/Linux 3.13.0-32-generic i686)",
   "",
   " * Documentation:  https://help.ubuntu.com/",
   "",
@@ -20,18 +27,66 @@ const terminalInput = document.getElementById("terminal-input");
 // Disable input initially
 terminalInput.disabled = true;
 
-// Check and display the last visit time
-function displayLastVisit() {
-  const lastVisit = localStorage.getItem('lastVisit');
+// Simulate typing effect
+function typeText(text, callback, delay = 100) {
+  let index = 0;
+  const interval = setInterval(() => {
+    if (index < text.length) {
+      terminalOutput.textContent += text[index];
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      index++;
+    } else {
+      clearInterval(interval);
+      terminalOutput.textContent += "\n";
+      if (callback) callback();
+    }
+  }, delay);
+}
+
+// Display the login sequence
+function displayLogIn() {
+  let index = 0;
+
+  function typeNextLine() {
+    if (index < logIn.length) {
+      terminalOutput.textContent += `${logIn[index]}`;
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+
+      if (index === 2) {
+        // Simulate typing "LRF_Projects" for the login
+        typeText("LRF-Projects", () => {
+          index++;
+          typeNextLine();
+        });
+      } else if (index === 3) {
+        // Simulate typing "********" for the password
+        typeText("********", () => {
+          index++;
+          setTimeout(() => {
+            terminalOutput.textContent += "\n";
+            displayLastVisitAndUpdates();
+          }, 100); // Wait a moment before displaying MOTD
+        });
+      } else {
+        index++;
+        typeNextLine();
+      }
+    }
+  }
+
+  typeNextLine();
+}
+
+// Display the last visit and MOTD
+function displayLastVisitAndUpdates() {
+  const lastVisit = localStorage.getItem("lastVisit");
   if (lastVisit) {
     updates[10] = `Last login: ${new Date(parseInt(lastVisit)).toLocaleString()}`;
   } else {
     updates[10] = "Last login: First time visit";
   }
-  localStorage.setItem('lastVisit', Date.now().toString());
-}
+  localStorage.setItem("lastVisit", Date.now().toString());
 
-function displayUpdates() {
   let index = 0;
   const interval = setInterval(() => {
     if (index < updates.length) {
@@ -42,11 +97,12 @@ function displayUpdates() {
       clearInterval(interval);
       enableInput();
     }
-  }, //500
-   100);
+  }, 300);
 }
 
+// Enable the terminal input
 function enableInput() {
+  document.getElementById("terminal-prompt").style.display = "flex";
   terminalInput.disabled = false;
   terminalInput.focus();
 }
@@ -54,14 +110,14 @@ function enableInput() {
 //Const variables for each command
 
 const fetchArt = ` 
-⠀⠤⢶⠖⠉⠉⠉⠉⠉⠉⠒⢄⠀⠀⠀⠀  - Implemented commands 1-7 | Mar 28
-⠻⠀⢸⠀⠀⠀⢠⠒⠒⠒⢤⡀⠸⠀⠀⠀   -
-⠸⠀⡏⠀⠀⠀⠸⣄⣀⣀⣀⠇⠀⡇⠀⠀    -
-⢰⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀      -
+⠀⠤⢶⠖⠉⠉⠉⠉⠉⠉⠒⢄⠀⠀⠀⠀  - Implemented commands 1-8 | Mar 28
+⠻⠀⢸⠀⠀⠀⢠⠒⠒⠒⢤⡀⠸⠀⠀⠀   - Added username and password insertion | Mar 28
+⠸⠀⡏⠀⠀⠀⠸⣄⣀⣀⣀⠇⠀⡇⠀⠀    - Added cat commands | Mar 28
+⢰⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀      - Removed the username being showed until after the MOTD | Mar 28
 ⠘⣀⠇⠀⠀⠀⠀⡠⠤⠤⡀⠀⠀⠊⠉⢳     
 ⠀⠀⠉⠙⢶⡿⣀⣀⣀⣀⠜⠈⠒⠒⠒⠁      
 
- update ttyl --Type 'exit' to quit | 'help' for commmands.
+ update tty7 --Type 'exit' to quit | 'help' for commmands.
   `;
 
 
@@ -134,7 +190,7 @@ function exit() {
 }
 
 function amongus() {
-  terminalOutput.textContent += "AMONG US, bing bing bing!\n\n";
+  terminalOutput.textContent += "\tAMONG US, bing bing bing!\n\n";
 }
 
 function helpCMD() {
@@ -235,7 +291,7 @@ terminalInput.addEventListener("keydown", (event) => {
         break;
 
       default:
-        terminalOutput.textContent += "Command not found, I'm not a miracle worker.\n\n";
+        terminalOutput.textContent += "\tCommand not found, I'm not a miracle worker.\n\n";
     }
 
     // End of case statements for commands
@@ -246,7 +302,7 @@ terminalInput.addEventListener("keydown", (event) => {
   }
 });
 
+// On window load, start the login sequence
 window.onload = () => {
-  displayLastVisit();
-  displayUpdates();
+  displayLogIn();
 };
