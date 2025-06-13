@@ -1,0 +1,35 @@
+@charset "utf-8";
+/*
+   Author: Luke Franklin
+
+   Filename: publicPrint.css
+*/
+
+    body{
+        height: 97vh;
+        background-color: white;
+        background-image: none;
+        color: black;
+
+    }
+
+    p{
+        color: black;
+    }
+
+    h3 {
+        border-color: black;
+    }
+
+    hr:last-of-type {
+        border-width: 1vw;
+        border-color: black;
+        outline-color: black;
+        color: black;
+    } 
+
+    img {
+        filter: grayscale(100%);
+    }
+
+

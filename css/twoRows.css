@@ -1,0 +1,183 @@
+@charset "utf-8";
+/*
+   Author: Luke Franklin
+
+   Filename: twoRows.css
+*/
+
+
+
+/* Top Row */
+section#topRowText {
+    float: left;
+    width: 30vw;
+    height: 40vh;
+}
+
+header.topHeader {
+    width: 100%;
+    height: 5%;
+    font-size: 3vh;
+    text-align: center;
+}
+
+p.descTop {
+    margin: 0;
+    margin-top: 2%;
+
+}
+
+ul.List1 {
+    margin: 0;
+    font-size: 2vh;
+}
+
+
+/* End of Top Row */
+
+
+/* Bottom Row */
+section#bottomRowText{
+    float: right;
+    width: 29vw;
+    height: 40vh;
+}
+
+
+
+
+header.bottomHeader {
+    width: 100%;
+    height: 5%;
+    font-size: 3vh;
+    text-align: center;;
+}
+
+p.descBottom {
+    margin: 0;
+    margin-top: 2%;
+
+}
+
+ul.List2 {
+    margin: 0;
+    font-size: 2vh;
+}
+
+
+
+/* End of Bottom Row */
+
+
+
+
+
+/* Media sizes */
+@media (min-width:1500px) {
+    aside#topImage {
+        float: right;
+        width: 20vw;
+        height: 40vh;
+
+    }
+
+    aside#topImage>img, iframe {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+
+    aside#bottomImage {
+        width: 20vw;
+        height: 35vh;
+    }
+
+    aside#bottomImage>img {
+        border-radius: 100%;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+@media (min-width:1000px) AND (max-width:1499px) {
+
+    body {
+        height: 110vh;
+        overflow: auto;
+    }
+
+    aside#topImage {
+        float: right;
+        width: 20vw;
+        height: 40vh;
+
+    }
+
+    aside#topImage>img, iframe {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+    }
+
+    
+
+    aside#bottomImage {
+        width: 20vw;
+        height: 35vh;
+    }
+
+    aside#bottomImage>img {
+        border-radius: 100%;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+@media (max-width: 999px) {
+    section#topRowText{
+        width: 100vw;
+        text-align: left;
+    }
+
+    header.topHeader{
+        text-align: left;
+        font-size:3.5vh;
+    }
+
+    ul.List1{
+        font-size:2.5vh;
+        margin: 0;
+        margin-top: 4%;
+        color:gray;
+    }
+
+
+
+
+    section#bottomRowText{
+        margin:0;
+        margin-top: 8%;
+        width:100vw;
+        text-align: left;
+    }
+
+    header.bottomHeader{
+        text-align: left;
+        font-size: 4vh;
+    }
+
+    ul.List2{
+        font-size:2.5vh;
+        margin: 0;
+        margin-top: 4%;
+        color:gray;
+    }
+
+}
+
